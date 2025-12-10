@@ -1,0 +1,137 @@
+.stack-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+}
+
+.stack-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  height: 600px;
+}
+
+.stack-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  will-change: transform;
+}
+
+.stack-left {
+  flex: 1.2;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+.stack-tag {
+  background: rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.stack-left h2 {
+  font-size: 4rem;
+  line-height: 1;
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.stack-left p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 450px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.stack-pills {
+  display: flex;
+  gap: 10px;
+}
+.pill {
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  font-size: 0.85rem;
+}
+
+.stack-right {
+  flex: 0.8;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.stack-image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.stack-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.play-btn {
+  position: absolute;
+  bottom: 30px;
+  left: -30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stack-pattern {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+.pat-1 {
+  width: 600px;
+  height: 600px;
+  top: -100px;
+  left: 30%;
+}
+.pat-2 {
+  width: 800px;
+  height: 800px;
+  bottom: -200px;
+  left: 40%;
+}
+
+@media (max-width: 1024px) {
+  .stack-card {
+    flex-direction: column;
+  }
+  .stack-right {
+    display: none;
+  }
+}

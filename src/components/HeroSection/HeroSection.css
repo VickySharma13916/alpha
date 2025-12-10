@@ -1,0 +1,68 @@
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  z-index: 10;
+}
+
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatOrb 10s infinite alternate;
+}
+
+.orb-1 {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #4c1d95 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+}
+.orb-2 {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, #0e7490 0%, transparent 70%);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -5s;
+}
+
+.hero-content {
+  z-index: 5;
+  text-align: center;
+}
+.hero-content h1 {
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.hero-content p {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 50px);
+  }
+}

@@ -1,0 +1,71 @@
+import React from "react";
+import "./AlternatingSection.css";
+
+const sectionData = [
+  {
+    id: 1,
+    eyebrow: "Production",
+    splitText: "BRUNSOHN",
+    title: "DIGITAL VIDEO STUDIO.",
+    text: "We craft bold, modern visuals that define your brand. Our strategies align with your long-term goals and market opportunities.",
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    eyebrow: "Identity",
+    splitText: "IDENTITY",
+    title: "DESIGN THAT RESONATES.",
+    text: "From logos to design systems, we build visual identities that connect with your audience and stand the test of time.",
+    img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    eyebrow: "Experience",
+    splitText: "DIGITAL",
+    title: "IMMERSIVE WEB.",
+    text: "We create websites and applications that are not only beautiful but also intuitive, fast, and performance-driven.",
+    img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 4,
+    eyebrow: "Growth",
+    splitText: "GLOBAL",
+    title: "DATA DRIVEN.",
+    text: "Marketing campaigns that drive real engagement across borders. We tell your story through compelling content.",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+  },
+];
+
+const AlternatingSection = () => {
+  return (
+    <section className="alternating-section">
+      {sectionData.map((item) => (
+        <div key={item.id} className="alt-row">
+          {/* GIANT OVERLAY TEXT (Positioned Absolute Top) */}
+          <div className="split-text-container">
+            <h1 className="split-text">{item.splitText}</h1>
+          </div>
+
+          {/* TEXT COLUMN */}
+          <div className="alt-col text-col">
+            <div className="alt-content">
+              <span className="eyebrow">{item.eyebrow}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <button className="alt-btn">See Our Work</button>
+            </div>
+          </div>
+
+          {/* IMAGE COLUMN */}
+          <div className="alt-col img-col">
+            <div className="alt-img-wrapper">
+              <img src={item.img} alt={item.title} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+};
+
+export default AlternatingSection;

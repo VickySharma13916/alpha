@@ -1,0 +1,193 @@
+/* AlternatingSection.css */
+
+.alternating-section {
+  width: 100%;
+  background-color: #000;
+  position: relative;
+  z-index: 5;
+}
+
+/* --- STICKY ROW WRAPPER --- */
+.alt-row {
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  display: flex;
+  overflow: hidden;
+  /* Crucial: No gap between columns */
+  gap: 0;
+}
+
+/* --- ALTERNATING LAYOUTS --- */
+.alt-row:nth-child(odd) {
+  flex-direction: row;
+}
+.alt-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* --- COLUMNS (Strict 50/50 Split) --- */
+.alt-col {
+  /* Forces exactly half screen width */
+  width: 50vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- TEXT COLUMN --- */
+.text-col {
+  /* Padding for the inner content, not the column itself */
+  padding: 0 6vw;
+  background-color: #000;
+  z-index: 1; /* Lowest level */
+  align-items: flex-start;
+}
+
+.alt-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  position: relative;
+  /* Ensure content sits below the giant text visually */
+  margin-top: 15vh;
+  z-index: 5;
+}
+
+/* 1. EYEBROW */
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+
+/* 2. MAIN HEADLINE */
+.alt-content h3 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* 3. PARAGRAPH */
+.alt-content p {
+  font-size: 1.1rem;
+  color: #999;
+  line-height: 1.6;
+  max-width: 500px;
+  font-weight: 400;
+}
+
+/* 4. BUTTON */
+.alt-btn {
+  padding: 16px 32px;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.alt-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --- IMAGE COLUMN --- */
+.img-col {
+  padding: 0;
+  z-index: 1;
+}
+
+.alt-img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.alt-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- THE GIANT SPLIT TEXT (The "Brunsohn" Effect) --- */
+.split-text-container {
+  position: absolute;
+  /* Positioned at the top with padding as requested */
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  /* Z-Index higher than columns to overlay them */
+  z-index: 10;
+  pointer-events: none; /* Allows clicking underneath */
+}
+
+.split-text {
+  font-size: 13vw; /* Responsive Giant Size */
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.8;
+  margin: 0;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  white-space: nowrap;
+
+  /* Removed mix-blend-mode: difference to keep text solid white */
+  /* mix-blend-mode: difference; */
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Added shadow for better legibility on bright images */
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .split-text {
+    font-size: 10vw;
+    top: 12%;
+  }
+}
+
+@media (max-width: 768px) {
+  .alt-row,
+  .alt-row:nth-child(even) {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .alt-col {
+    width: 100%;
+    height: auto;
+  }
+
+  .img-col {
+    height: 50vh;
+    order: -1; /* Image always top on mobile */
+  }
+
+  .text-col {
+    padding: 60px 24px;
+    height: auto;
+  }
+
+  /* On mobile, blend mode might be tricky, usually better to position normally or hide */
+  .split-text-container {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+  }
+}

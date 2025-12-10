@@ -1,0 +1,172 @@
+.fly-section {
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.fly-header h2 {
+  font-size: 3rem;
+  margin-bottom: 5vh;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.fly-wrapper {
+  position: relative;
+  width: 800px; /* Increased width for split layout */
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fly-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  will-change: transform, opacity;
+}
+
+/* --- Left Side (Content) --- */
+.fly-card-left {
+  flex: 1.2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fff;
+  position: relative;
+  /* Glass effect internal overlay if needed, or just cleaner layout */
+}
+
+.fly-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.fly-card-left h3 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+}
+
+.fly-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+.fly-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fly-tag {
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.fly-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* --- Right Side (Image) --- */
+.fly-card-right {
+  flex: 0.8;
+  position: relative;
+  margin: 15px; /* Gap from the edges */
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.fly-card-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fly-card:hover .fly-card-right img {
+  transform: scale(1.05); /* Gentle zoom on hover */
+}
+
+/* Play Button Overlay */
+.play-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.play-icon {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 3px; /* Optical centering */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .fly-wrapper {
+    width: 90%;
+    height: 600px; /* Taller for vertical stacking */
+  }
+
+  .fly-card {
+    flex-direction: column;
+  }
+
+  .fly-card-left {
+    padding: 30px;
+    flex: 1;
+  }
+
+  .fly-card-right {
+    margin: 10px;
+    height: 40%;
+    flex: none;
+  }
+}
