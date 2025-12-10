@@ -1,6 +1,8 @@
 import React from "react";
 import "./HeroSection.css";
 
+import AnimatedText from "../ui/AnimatedText";
+
 const HeroSection = () => {
   return (
     <section className="hero-section">
@@ -9,8 +11,12 @@ const HeroSection = () => {
         <div className="orb orb-2"></div>
       </div>
       <div className="hero-content">
-        <h1>Agency.</h1>
-        <p>Redefining Excellence.</p>
+        <AnimatedText tag="h1" type="scramble" delay={0.5}>
+          Vicky.
+        </AnimatedText>
+        <AnimatedText tag="p" type="split" delay={1.5}>
+          Redefining Excellence.
+        </AnimatedText>
       </div>
     </section>
   );

@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
 import "./FlyCard.css";
+
+import AnimatedText from "../ui/AnimatedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,26 +98,28 @@ const FlyCard = () => {
 
   useGSAP(
     () => {
-      // Use GSAP's utility to select cards within the scope
       const cards = gsap.utils.toArray(".fly-card");
-
-      // Ensure strict stacking order (Card 1 at bottom, Card 8 at top)
       gsap.set(cards, { zIndex: (i) => i + 1 });
+
+      const CARD_ANIM_DURATION = 1; // Duration for each card's entry animation
+      const PAUSE_DURATION = 0.1; // Gap between cards to let them settle
+      const SCROLL_MULTIPLIER = 500; // Pixels to scroll for each card's duration
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          // Calculate scroll length based on number of cards to keep speed consistent
-          end: `+=${cards.length * 500}`,
+          end: `+=${
+            cards.length *
+            (CARD_ANIM_DURATION + PAUSE_DURATION) *
+            SCROLL_MULTIPLIER
+          }`,
           pin: true,
           scrub: 1,
         },
       });
 
       cards.forEach((card, i) => {
-        // --- INFINITE CYCLE LOGIC ---
-        // using % 4 ensures the pattern 0,1,2,3... repeats for any number of cards
         const direction = i % 4;
 
         let startX = 0;
@@ -122,13 +127,11 @@ const FlyCard = () => {
         const xOff = window.innerWidth;
         const yOff = window.innerHeight;
 
-        // Assign start positions based on the cycle
-        if (direction === 0) startX = -xOff; // Left
-        if (direction === 1) startX = xOff; // Right
-        if (direction === 2) startY = -yOff; // Top
-        if (direction === 3) startY = yOff; // Bottom
+        if (direction === 0) startX = -xOff;
+        if (direction === 1) startX = xOff;
+        if (direction === 2) startY = -yOff;
+        if (direction === 3) startY = yOff;
 
-        // --- ANIMATION ---
         tl.fromTo(
           card,
           {
@@ -141,13 +144,15 @@ const FlyCard = () => {
           {
             x: 0,
             y: 0,
-            rotation: Math.random() * 4 - 2, // Reduced rotation for cleaner look
+            rotation: Math.random() * 4 - 2,
             opacity: 1,
             scale: 1,
-            duration: 1,
+            duration: CARD_ANIM_DURATION,
             ease: "power3.out",
           },
-          i * 0.5 // Stagger ensures they pile up one by one
+          // Position each card's entry animation sequentially on the timeline.
+          // This ensures the previous card's animation finishes before the next one starts.
+          i * (CARD_ANIM_DURATION + PAUSE_DURATION)
         );
       });
     },
@@ -157,7 +162,9 @@ const FlyCard = () => {
   return (
     <section className="fly-section" ref={containerRef}>
       <div className="fly-header">
-        <h2>Our Capabilities</h2>
+        <AnimatedText tag="h2" type="scramble">
+          Our Capabilities
+        </AnimatedText>
       </div>
       <div className="fly-wrapper">
         {flyData.map((item) => (

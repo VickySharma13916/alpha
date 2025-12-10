@@ -1,6 +1,8 @@
 import React from "react";
 import "./AlternatingSection.css";
 
+import AnimatedText from "../ui/AnimatedText";
+
 const sectionData = [
   {
     id: 1,
@@ -43,15 +45,21 @@ const AlternatingSection = () => {
         <div key={item.id} className="alt-row">
           {/* GIANT OVERLAY TEXT (Positioned Absolute Top) */}
           <div className="split-text-container">
-            <h1 className="split-text">{item.splitText}</h1>
+            <AnimatedText tag="h1" className="split-text" type="split">
+              {item.splitText}
+            </AnimatedText>
           </div>
 
           {/* TEXT COLUMN */}
           <div className="alt-col text-col">
             <div className="alt-content">
               <span className="eyebrow">{item.eyebrow}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <AnimatedText tag="h3" type="split">
+                {item.title}
+              </AnimatedText>
+              <AnimatedText tag="p" type="split">
+                {item.text}
+              </AnimatedText>
               <button className="alt-btn">See Our Work</button>
             </div>
           </div>

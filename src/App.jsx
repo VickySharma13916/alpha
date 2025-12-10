@@ -3,17 +3,15 @@ import FlyCard from "./components/FlyCard";
 import HeroSection from "./components/HeroSection";
 import Marquee from "./components/Marquee";
 import Stack from "./components/Stack";
+import AlternatingSection from "./components/AlternatingSection";
 
 import "./App.css";
-import AlternatingSection from "./components/AlternatingSection";
-// import Hero3D from "./components/Hero3D";
 
 const App = () => {
   return (
     <div className="main-wrapper">
       <Cursor />
       <HeroSection />
-      {/* <Hero3D /> */}
       <Stack />
       <Marquee />
       <FlyCard />

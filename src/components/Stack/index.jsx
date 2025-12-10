@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
 import "./Stack.css";
+
+import AnimatedText from "../ui/AnimatedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,9 +111,15 @@ const Stack = () => {
             <div className="stack-pattern pat-2"></div>
 
             <div className="stack-left">
-              <div className="stack-tag">{card.tag}</div>
-              <h2>{card.title}</h2>
-              <p>{card.text}</p>
+              <AnimatedText className="stack-tag" type="scramble">
+                {card.tag}
+              </AnimatedText>
+              <AnimatedText tag="h2" type="split">
+                {card.title}
+              </AnimatedText>
+              <AnimatedText tag="p" type="split">
+                {card.text}
+              </AnimatedText>
               <div className="stack-pills">
                 {card.tags.map((t) => (
                   <span key={t} className="pill">

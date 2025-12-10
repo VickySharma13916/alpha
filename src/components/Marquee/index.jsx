@@ -1,11 +1,12 @@
 import React from "react";
 import "./Marquee.css";
 
+import AnimatedText from "../ui/AnimatedText";
+
 const logos1 = [
   "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
   "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
   "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-  //   "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
   "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
 ];
 
@@ -42,8 +43,12 @@ const Marquee = () => {
   return (
     <section className="marquee-section">
       <div className="marquee-bg-text">
-        <span>TRUSTED</span>
-        <span>PARTNERS</span>
+        <AnimatedText tag="span" type="scramble">
+          TRUSTED
+        </AnimatedText>
+        <AnimatedText tag="span" type="scramble">
+          PARTNERS
+        </AnimatedText>
       </div>
       <div className="marquee-container">
         <div className="marquee-strip strip-top">
