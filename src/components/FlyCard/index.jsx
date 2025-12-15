@@ -29,7 +29,7 @@ const flyData = [
       "Stunning visuals that capture attention. From UI/UX to print, we design with purpose and precision.",
     tags: ["UI/UX", "Art Direction"],
     color: "linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)",
-    img: "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2670&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop",
   },
   {
     id: 3,
