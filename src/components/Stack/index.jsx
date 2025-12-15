@@ -77,16 +77,13 @@ const Stack = () => {
 
         const startAt = i - 1;
 
-        // New Card Slides UP
         tl.to(card, { y: 0, ease: "none", duration: 1 }, startAt);
 
-        // Previous Card Stays & Darkens (Apple Style)
         if (cards[i - 1]) {
           tl.to(
             cards[i - 1],
             {
               scale: 0.92,
-              //   filter: "brightness(1)",
               duration: 1,
             },
             startAt

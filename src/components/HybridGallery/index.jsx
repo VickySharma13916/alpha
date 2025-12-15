@@ -77,9 +77,6 @@ const HybridSection = ({ section, index, setActiveTab }) => {
     () => {
       const track = trackRef.current;
 
-      // Helper to calculate scroll amount dynamically
-      // We add a small buffer (+100px) to safeguard against rounding errors
-      // preventing the last card from fully clearing.
       const getScrollAmount = () => {
         return track.scrollWidth - window.innerWidth;
       };
@@ -114,7 +111,6 @@ const HybridSection = ({ section, index, setActiveTab }) => {
       style={{ zIndex: index + 1 }}
     >
       <div className="hybrid-track" ref={trackRef}>
-        {/* VERTICAL INTRO */}
         <div className="hybrid-intro-slide">
           <div className="intro-content">
             <span className="hybrid-number">0{index + 1}</span>
@@ -123,7 +119,6 @@ const HybridSection = ({ section, index, setActiveTab }) => {
           </div>
         </div>
 
-        {/* HORIZONTAL CARDS */}
         {section.cards.map((card, i) => (
           <div key={i} className="hybrid-card-slide">
             <div className="hybrid-card">
@@ -194,7 +189,6 @@ const HybridGallery = () => {
 
   return (
     <div className="hybrid-gallery-container" ref={galleryRef}>
-      {/* FIXED NAV */}
       <nav className="hybrid-top-nav" ref={navRef}>
         {data.map((item) => (
           <button
@@ -208,7 +202,6 @@ const HybridGallery = () => {
         ))}
       </nav>
 
-      {/* SECTIONS */}
       {data.map((section, index) => (
         <HybridSection
           key={section.id}

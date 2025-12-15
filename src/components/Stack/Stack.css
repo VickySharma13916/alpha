@@ -131,7 +131,18 @@
   .stack-card {
     flex-direction: column;
   }
-  .stack-right {
-    display: none;
+
+  .stack-left {
+    padding: 20px;
+    flex: 1;
+  }
+
+  .stack-left h2 {
+    font-size: 3rem;
+  }
+
+  .stack-left p {
+    font-size: 1rem;
+    max-width: 100%;
   }
 }

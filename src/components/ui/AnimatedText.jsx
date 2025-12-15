@@ -21,31 +21,28 @@ const AnimatedText = ({
     () => {
       const el = comp.current;
 
-      // Ensure we have content to animate
       if (!el) return;
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          start: "top 85%", // Start when element is near bottom of viewport
+          start: "top 85%",
           toggleActions: "play none none reverse",
         },
         delay: delay,
       });
 
       if (type === "scramble") {
-        // Scramble Effect (Good for Headers)
         tl.to(el, {
           duration: 1.5,
           scrambleText: {
-            text: children, // Ensure it resolves to the correct text
+            text: children,
             chars: "upperCase",
             revealDelay: 0.5,
             speed: 0.3,
           },
         });
       } else if (type === "split") {
-        // SplitText Effect (Good for Paragraphs/Headings)
         const split = new SplitText(el, { type: "lines,words,chars" });
 
         tl.from(split.chars, {

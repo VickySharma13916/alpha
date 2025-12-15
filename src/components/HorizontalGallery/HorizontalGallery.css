@@ -8,7 +8,6 @@ HorizontalGallery.css .h-gallery-section {
   flex-direction: column;
 }
 
-/* --- HEADER --- */
 .h-header {
   position: absolute;
   top: 0;
@@ -51,17 +50,14 @@ HorizontalGallery.css .h-gallery-section {
   opacity: 0.5;
 }
 
-/* --- TRACK --- */
 .h-track {
   display: flex;
   height: 100%;
-  width: max-content; /* Width adapts to content */
+  width: max-content;
   will-change: transform;
 }
 
-/* --- PAGE SECTION --- */
 .h-page {
-  /* Each section takes full viewport width */
   width: 100vw;
   height: 100%;
   display: flex;
@@ -70,7 +66,6 @@ HorizontalGallery.css .h-gallery-section {
   border-right: 1px dashed rgba(255, 255, 255, 0.05);
 }
 
-/* --- TEXT INFO --- */
 .h-page-info {
   width: 15%;
   height: 60%;
@@ -102,7 +97,6 @@ HorizontalGallery.css .h-gallery-section {
   text-transform: uppercase;
 }
 
-/* --- CARDS CONTAINER --- */
 .h-cards-container {
   display: flex;
   gap: 40px;
@@ -110,20 +104,15 @@ HorizontalGallery.css .h-gallery-section {
   align-items: center;
 }
 
-/* LAYOUT FOR 1 CARD ONLY */
 .h-cards-container.single-mode {
-  width: 60%; /* Restrict width so single card looks intentional */
-  justify-content: center; /* Center the single card */
+  width: 60%;
+  justify-content: center;
 }
-
-/* LAYOUT FOR 2 CARDS (Default) */
 .h-cards-container:not(.single-mode) {
   width: 70%;
 }
 
-/* --- CARD STYLING --- */
 .h-card {
-  /* For single mode, make it big. For double, split space. */
   flex: 1;
   min-width: 300px;
   height: 100%;
@@ -132,7 +121,6 @@ HorizontalGallery.css .h-gallery-section {
   transition: transform 0.4s ease;
 }
 
-/* If it's a single card, limit its max width so it doesn't look stretched */
 .single-mode .h-card {
   max-width: 600px;
 }
@@ -168,7 +156,6 @@ HorizontalGallery.css .h-gallery-section {
   filter: grayscale(0%);
 }
 
-/* --- OVERLAY TEXT --- */
 .h-card-overlay {
   position: absolute;
   bottom: 0;
@@ -204,8 +191,20 @@ HorizontalGallery.css .h-gallery-section {
   color: #fff;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+  .h-header {
+    top: 20px;
+    height: 80px;
+  }
+
+  .h-tabs {
+    gap: 10px;
+  }
+
+  .h-pill {
+    padding: 6px 12px;
+    font-size: 0.6rem;
+  }
   .h-page {
     flex-direction: column;
     padding: 100px 20px;
@@ -213,10 +212,12 @@ HorizontalGallery.css .h-gallery-section {
   .h-page-info {
     width: 100%;
     height: auto;
-    flex-direction: row;
     border-right: none;
     margin: 0 0 30px 0;
     padding: 0;
+  }
+  .h-page-info h2 {
+    font-size: 3rem;
   }
   .h-page-info h2,
   .h-page-info p {
@@ -231,5 +232,9 @@ HorizontalGallery.css .h-gallery-section {
   .h-card {
     width: 100%;
     height: 300px;
+  }
+
+  .h-track {
+    flex-direction: column;
   }
 }

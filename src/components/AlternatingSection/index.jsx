@@ -40,29 +40,23 @@ const sectionData = [
 const AlternatingSection = () => {
   const container = useRef(null);
 
-  // Note: We removed the GSAP Pinning logic here because CSS 'position: sticky'
-  // handles the stacking effect much smoother for this specific layout.
-
   return (
     <section className="alternating-section" ref={container}>
       {sectionData.map((item, index) => {
-        // Calculate if this is an even row (0, 2, 4...)
         const isEven = index % 2 === 0;
 
         return (
           <div
             key={item.id}
             className={`alt-row ${isEven ? "row-normal" : "row-reversed"}`}
-            style={{ zIndex: index + 1 }} // Ensure proper stacking order
+            style={{ zIndex: index + 1 }}
           >
-            {/* GIANT OVERLAY TEXT */}
             <div className="split-text-container">
               <AnimatedText tag="h1" className="split-text" type="split">
                 {item.splitText}
               </AnimatedText>
             </div>
 
-            {/* TEXT COLUMN */}
             <div className="alt-col text-col">
               <div className="alt-content">
                 <span className="eyebrow">{item.eyebrow}</span>
@@ -76,7 +70,6 @@ const AlternatingSection = () => {
               </div>
             </div>
 
-            {/* IMAGE COLUMN */}
             <div className="alt-col img-col">
               <div className="alt-img-wrapper">
                 <img src={item.img} alt={item.title} />

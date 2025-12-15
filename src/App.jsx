@@ -1,4 +1,5 @@
 import "./App.css";
+
 import AlternatingSection from "./components/AlternatingSection";
 import Cursor from "./components/Cursor";
 import FlyCard from "./components/FlyCard";
@@ -21,17 +22,7 @@ const App = () => {
       <HorizontalGallery />
       <Marquee />
 
-      {/* Simple Footer inline for brevity, or make a component */}
-      <section
-        className="footer"
-        style={{
-          height: "50vh",
-          background: "#000",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <section className="footer">
         <h2>Let's Work Together</h2>
       </section>
     </div>

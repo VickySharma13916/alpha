@@ -9,7 +9,6 @@ import AnimatedText from "../ui/AnimatedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Added more data to demonstrate the infinite loop
 const flyData = [
   {
     id: 1,
@@ -101,9 +100,9 @@ const FlyCard = () => {
       const cards = gsap.utils.toArray(".fly-card");
       gsap.set(cards, { zIndex: (i) => i + 1 });
 
-      const CARD_ANIM_DURATION = 1; // Duration for each card's entry animation
-      const PAUSE_DURATION = 0.1; // Gap between cards to let them settle
-      const SCROLL_MULTIPLIER = 500; // Pixels to scroll for each card's duration
+      const CARD_ANIM_DURATION = 1;
+      const PAUSE_DURATION = 0.1;
+      const SCROLL_MULTIPLIER = 500;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -150,8 +149,6 @@ const FlyCard = () => {
             duration: CARD_ANIM_DURATION,
             ease: "power3.out",
           },
-          // Position each card's entry animation sequentially on the timeline.
-          // This ensures the previous card's animation finishes before the next one starts.
           i * (CARD_ANIM_DURATION + PAUSE_DURATION)
         );
       });

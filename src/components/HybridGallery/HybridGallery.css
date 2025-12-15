@@ -1,25 +1,21 @@
-/* HybridGallery.css */
-
 .hybrid-gallery-container {
   background-color: #050505;
   width: 100%;
   position: relative;
   z-index: 5;
-  /* Add padding bottom to container to separate sections slightly */
   padding-bottom: 10vh;
 }
 
-/* --- FIXED TOP NAVIGATION --- */
 .hybrid-top-nav {
   position: fixed;
-  top: 40px; /* Lowered slightly */
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   display: flex;
   gap: 8px;
   padding: 6px 8px;
-  background: rgba(10, 10, 10, 0.85); /* Darker, more premium */
+  background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(16px);
   border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -43,7 +39,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth Apple-like easing */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -67,7 +63,6 @@
   border-radius: 50%;
 }
 
-/* --- SECTION WRAPPER --- */
 .hybrid-section-wrapper {
   width: 100%;
   height: 100vh;
@@ -75,35 +70,25 @@
   position: relative;
   display: flex;
   align-items: center;
-
-  /* OVERLAP EFFECT: 
-     All sections except the first one will be pulled up by 10vh 
-     to overlap the previous pinned section. 
-  */
   will-change: transform;
 }
 
 .hybrid-section-wrapper:not(:first-of-type) {
   margin-top: -10vh;
-  /* Add a shadow to emphasize the separation/stacking */
   box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.8);
-  /* Ensure it has a background so we don't see through it */
   background-color: #050505;
 }
 
-/* --- TRACK --- */
 .hybrid-track {
   display: flex;
   height: 100%;
   width: max-content;
   will-change: transform;
-  /* Very large padding to ensure the last card is not cut off */
   padding-right: 25vw;
 }
 
-/* --- 1. INTRO SLIDE --- */
 .hybrid-intro-slide {
-  width: 45vw; /* Slightly wider for better text flow */
+  width: 45vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -118,7 +103,7 @@
 }
 
 .hybrid-number {
-  font-family: "Courier New", monospace; /* Monospace for tech feel */
+  font-family: "Courier New", monospace;
   font-size: 0.9rem;
   color: #555;
   display: block;
@@ -145,7 +130,6 @@
   font-weight: 300;
 }
 
-/* --- 2. CARD SLIDES --- */
 .hybrid-card-slide {
   width: 55vw;
   height: 100%;
@@ -153,16 +137,16 @@
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  padding-left: 4vw; /* More breathing room between cards */
+  padding-left: 4vw;
 }
 
 .hybrid-card {
   width: 100%;
-  height: 70vh; /* Taller cards */
+  height: 70vh;
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); /* Deep shadow */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -181,7 +165,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Slow smooth zoom */
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hybrid-card:hover .h-img-wrap img {
@@ -205,11 +189,10 @@
   letter-spacing: -0.02em;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .hybrid-top-nav {
     top: 20px;
-    width: 95%;
+    width: 80%;
     justify-content: space-between;
     padding: 6px;
   }
@@ -231,7 +214,8 @@
   .hybrid-card-slide {
     width: 90vw;
     padding-left: 20px;
-  } /* Cards wider on mobile */
+  }
+
   .hybrid-card {
     height: 55vh;
   }
