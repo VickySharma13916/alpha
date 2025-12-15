@@ -1,68 +1,113 @@
+/* HeroSection.css */
 .hero-section {
+  position: relative;
+  width: 100%;
   height: 100vh;
+  background-color: #000;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  z-index: 10;
 }
 
-.aurora-bg {
+/* Canvas sits behind everything */
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Vignette for cinematic focus */
+.hero-vignette {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  filter: blur(80px);
-  opacity: 0.6;
+  background: radial-gradient(circle, transparent 40%, #000 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
-.orb {
+/* Grain overlay for texture/professional feel */
+.hero-grain {
   position: absolute;
-  border-radius: 50%;
-  animation: floatOrb 10s infinite alternate;
-}
-
-.orb-1 {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, #4c1d95 0%, transparent 70%);
-  top: -10%;
-  left: -10%;
-}
-.orb-2 {
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, #0e7490 0%, transparent 70%);
-  bottom: -10%;
-  right: -10%;
-  animation-delay: -5s;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 .hero-content {
-  z-index: 5;
+  position: relative;
+  z-index: 10;
   text-align: center;
-}
-.hero-content h1 {
-  font-size: 6rem;
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: -2px;
-}
-.hero-content p {
-  font-size: 1.5rem;
-  color: #ccc;
-  margin-top: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  mix-blend-mode: screen; /* Blends text beautifully with stars */
 }
 
-@keyframes floatOrb {
-  0% {
-    transform: translate(0, 0);
+/* Modern Typography */
+.hero-title {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  font-size: 8rem;
+  font-weight: 800;
+  /* letter-spacing: -0.005em; */
+  color: #fff;
+  margin: 0;
+  /* Clip background for subtle gradient text */
+  background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform: translateY(20px);
+  opacity: 0;
+  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+}
+
+.hero-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1rem;
+
+  transform: translateY(20px);
+  opacity: 0;
+  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+}
+
+/* Separator line */
+.hero-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #fff, transparent);
+  margin: 2rem auto 0;
+  opacity: 0.3;
+
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: growLine 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s;
+}
+
+@keyframes revealUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  100% {
-    transform: translate(30px, 50px);
+}
+
+@keyframes growLine {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
   }
 }
